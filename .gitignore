@@ -39,3 +39,11 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Firebase and sensitive configuration
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
