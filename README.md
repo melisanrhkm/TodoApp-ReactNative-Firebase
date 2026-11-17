@@ -30,8 +30,6 @@ Dengan tampilan yang sederhana dan sinkronisasi data secara real-time, TodosApp 
 | @expo/vector-icons | Ikon antarmuka |
 | react-native-safe-area-context | Pengelolaan area aman perangkat |
 
-*Versi teknologi mengikuti deklarasi dependensi pada `package.json`.*
-
 ## 🗄️ Penyimpanan Data
 
 TodosApp menggunakan **Firebase Cloud Firestore** sebagai tempat penyimpanan data tugas.
