@@ -1,110 +1,129 @@
-# TodosApp
+# 📝 TodosApp
 
-### Catat tugas, bereskan satu per satu! ✅
+### Catat tugas, selesaikan satu per satu! ✅
 
-Halo! 👋 **TodosApp** adalah aplikasi daftar tugas yang dibuat dengan **React Native**, **Expo**, **React Navigation**, dan **Firebase Cloud Firestore**. Tambahkan tugas baru, ubah namanya, atau hapus tugas yang sudah tidak diperlukan.
+**TodosApp** adalah aplikasi manajemen tugas sederhana yang membantu pengguna mencatat, mengelola, dan memantau daftar aktivitas sehari-hari. Dibangun menggunakan **React Native**, **Expo**, **React Navigation**, dan **Firebase Cloud Firestore**, aplikasi ini memungkinkan pengguna menambahkan, mengubah, serta menghapus tugas dengan mudah.
 
+Dengan tampilan yang sederhana dan sinkronisasi data secara real-time, TodosApp membantu aktivitas pengelolaan tugas menjadi lebih praktis dan terorganisir.
 
-## Fitur
+## ✨ Fitur Utama
 
-Kelola tugas langsung dari aplikasi:
+- 📋 **Daftar Tugas** — Menampilkan seluruh tugas, dengan tugas terbaru berada di urutan teratas.
+- ➕ **Tambah Tugas** — Menambahkan tugas baru dengan validasi agar input tidak kosong.
+- ✏️ **Edit Tugas** — Mengubah nama tugas melalui halaman detail.
+- 🗑️ **Hapus Tugas** — Menghapus tugas dengan konfirmasi sebelum data dihapus.
+- 🔄 **Real-time Synchronization** — Memperbarui daftar secara otomatis melalui Firebase Cloud Firestore.
+- 💬 **Empty State** — Menampilkan informasi ketika belum ada tugas.
+- ⚠️ **Notifikasi** — Memberikan pemberitahuan ketika operasi berhasil atau mengalami kesalahan.
 
-- 📋 Lihat daftar tugas; tugas terbaru tampil lebih dahulu.
-- ➕ Tambahkan tugas. Teks kosong atau hanya spasi tidak diterima.
-- ✏️ Ubah nama tugas dari layar detail; nama tidak boleh kosong.
-- 🗑️ Hapus tugas setelah konfirmasi.
-- 🔄 Lihat pembaruan daftar secara real-time dari Firestore.
-- 💬 Lihat pesan ketika daftar masih kosong. Penghapusan dan pembaruan menampilkan pemberitahuan keberhasilan; kesalahan operasi menampilkan pemberitahuan kesalahan.
+## 🛠️ Teknologi yang Digunakan
 
-## Teknologi
+| Teknologi | Versi / Fungsi |
+|---|---|
+| JavaScript | Bahasa pemrograman |
+| React Native | 0.88.1 |
+| React | 19.3.0 |
+| Expo SDK | ~58.0.23 |
+| React Navigation | Navigasi antarhalaman menggunakan Stack |
+| Firebase | ^13.2.0 |
+| Cloud Firestore | Database NoSQL dan sinkronisasi real-time |
+| @expo/vector-icons | Ikon antarmuka |
+| react-native-safe-area-context | Pengelolaan area aman perangkat |
 
-| Teknologi | Versi atau fungsi |
-| --- | --- |
-| JavaScript | Bahasa yang digunakan pada file aplikasi |
-| React Native | `0.88.1` |
-| React | `19.3.0` |
-| Expo SDK | `~58.0.23` |
-| React Navigation | Navigasi layar dengan stack |
-| Firebase | `^13.2.0`; Cloud Firestore melalui API compat |
-| `@expo/vector-icons` | Ikon pada antarmuka |
-| `react-native-safe-area-context` | Pengelolaan area aman perangkat |
+*Versi teknologi mengikuti deklarasi dependensi pada `package.json`.*
 
-Versi mengikuti deklarasi dependensi di `package.json`.
+## 🗄️ Penyimpanan Data
 
-## Penyimpanan Data
+TodosApp menggunakan **Firebase Cloud Firestore** sebagai tempat penyimpanan data tugas.
 
-Tugas disimpan di Firebase Cloud Firestore, pada collection `todos`.
+Data tugas disimpan dalam collection bernama `todos` dengan struktur berikut:
 
-| Field | Kegunaan |
-| --- | --- |
-| `heading` | Nama atau teks tugas |
-| `createdAt` | Waktu pembuatan; dipakai untuk mengurutkan daftar |
+| Field | Keterangan |
+|---|---|
+| `heading` | Nama atau isi tugas |
+| `createdAt` | Waktu pembuatan tugas |
 
-Data dibaca melalui listener real-time. Aplikasi juga bisa menambahkan, memperbarui, dan menghapus dokumen pada collection tersebut.
+Aplikasi memanfaatkan listener real-time untuk menerima perubahan data secara otomatis. Selain membaca data, aplikasi juga mendukung operasi tambah, ubah, dan hapus data.
 
-## Struktur Proyek
+## 📁 Struktur Proyek
 
 ```text
-.
-├── .gitignore
-├── AGENTS.md
+TodosApp/
+├── assets/
+│   ├── android-icon-background.png
+│   ├── android-icon-foreground.png
+│   ├── android-icon-monochrome.png
+│   ├── favicon.png
+│   ├── icon.png
+│   └── splash-icon.png
+├── Screens/
+│   ├── Detail.js
+│   └── Home.js
+├── screenshots/
+│   ├── home.jpg
+│   ├── edit.jpg
+│   └── empty-state.jpg
 ├── App.js
 ├── app.json
 ├── config.js
 ├── index.js
-├── LICENSE
 ├── package.json
 ├── package-lock.json
-├── README.md
-├── Screens/
-│   ├── Detail.js
-│   └── Home.js
-└── assets/
-    ├── android-icon-background.png
-    ├── android-icon-foreground.png
-    ├── android-icon-monochrome.png
-    ├── favicon.png
-    ├── icon.png
-    └── splash-icon.png
+├── LICENSE
+└── README.md
 ```
 
-Folder `.expo/` dan `node_modules/` tidak dicantumkan karena merupakan folder lokal atau dependensi yang diabaikan Git.
+### Penjelasan File Penting
 
-Kalau ingin menjelajahi kode, file-file ini yang paling berguna:
+- `App.js` — Mengatur navigasi Stack antara halaman Home dan Detail.
+- `Screens/Home.js` — Mengelola daftar tugas, penambahan, penghapusan, dan navigasi.
+- `Screens/Detail.js` — Menangani proses pengubahan nama tugas.
+- `config.js` — Menginisialisasi Firebase dan koneksi Firestore.
+- `index.js` — Menjadi titik masuk aplikasi Expo.
+- `app.json` — Menyimpan konfigurasi aplikasi Expo.
+- `assets/` — Menyimpan ikon dan aset visual aplikasi.
+- `screenshots/` — Menyimpan dokumentasi tampilan aplikasi.
 
-- `App.js` menyiapkan navigasi stack untuk layar `Home` dan `Detail`.
-- `Screens/Home.js` menampilkan daftar dan menangani penambahan, penghapusan, serta navigasi ke layar detail.
-- `Screens/Detail.js` menyediakan form untuk mengubah nama tugas.
-- `config.js` menginisialisasi Firebase dan menyediakan akses Firestore.
-- `index.js` mendaftarkan komponen utama ke Expo.
-- `app.json` memuat pengaturan Expo, termasuk nama aplikasi, orientasi, ikon, dan dukungan tablet iOS.
-- `assets/` berisi ikon aplikasi serta aset favicon dan Android.
+## 🚀 Persyaratan dan Instalasi
 
-## Persyaratan
+Sebelum menjalankan aplikasi, pastikan perangkat pengembangan sudah memiliki:
 
-- Node.js dan npm untuk memasang dependensi serta menjalankan skrip.
-- Akses ke proyek Firebase dengan Cloud Firestore yang disiapkan untuk aplikasi.
-- Perangkat atau lingkungan pengembangan yang sesuai dengan target Expo yang dipilih.
+- Node.js dan npm.
+- Akses ke proyek Firebase.
+- Firebase Cloud Firestore yang sudah disiapkan.
+- Perangkat atau emulator yang mendukung lingkungan Expo.
 
-Versi minimum Node.js/npm dan versi minimum Android, iOS, atau browser belum ditentukan dalam file proyek. Konfigurasi menyatakan dukungan tablet iOS, tetapi aplikasi belum diverifikasi pada platform tertentu.
+### 1. Clone Repository
 
-## Memulai
+```bash
+git clone https://github.com/melisanrhkm/TodosApp.git
+```
 
-Siapkan dulu dependensinya dari direktori root proyek:
+### 2. Masuk ke Folder Proyek
+
+```bash
+cd TodosApp
+```
+
+### 3. Install Dependencies
 
 ```bash
 npm install
 ```
 
-Sebelum menjalankan aplikasi, sesuaikan konfigurasi Firebase seperti dijelaskan di bagian [Konfigurasi Firebase](#konfigurasi-firebase).
+### 4. Konfigurasi Firebase
 
-Lalu, mulai Expo:
+Buka file `config.js`, kemudian sesuaikan konfigurasi Firebase menggunakan konfigurasi dari proyek Firebase milik sendiri.
+
+Pastikan Cloud Firestore sudah diaktifkan dan aturan keamanannya telah disesuaikan dengan kebutuhan aplikasi.
+
+### 5. Jalankan Aplikasi
 
 ```bash
 npm start
 ```
 
-Butuh target tertentu? Skrip berikut juga tersedia:
+Perintah tambahan yang tersedia:
 
 ```bash
 npm run android
@@ -112,37 +131,51 @@ npm run ios
 npm run web
 ```
 
-Skrip tersebut menjalankan Expo untuk target yang dipilih. Perlu diingat, tersedianya skrip bukan berarti aplikasi sudah diverifikasi berjalan pada Android, iOS, atau Web.
+*Keberhasilan menjalankan aplikasi pada setiap platform bergantung pada konfigurasi dan lingkungan pengembangan yang digunakan.*
 
-## Konfigurasi Firebase
+## 📱 Cara Menggunakan Aplikasi
 
-Firebase diinisialisasi melalui `config.js`, dan konfigurasi client saat ini ditulis langsung di sana. Gunakan konfigurasi dari proyek Firebase Anda sendiri dan siapkan Cloud Firestore.
+1. Buka aplikasi TodosApp untuk melihat daftar tugas.
+2. Masukkan nama tugas pada kolom **Add new todo**.
+3. Tekan tombol **Add** untuk menyimpan tugas.
+4. Pilih salah satu tugas untuk membuka halaman **Edit Todo**.
+5. Ubah nama tugas, kemudian tekan tombol **UPDATE**.
+6. Untuk menghapus tugas, tekan ikon hapus dan konfirmasikan tindakan.
+7. Perubahan data akan diperbarui secara otomatis melalui Firestore.
 
-1. Masukkan konfigurasi milik proyek Firebase Anda.
-2. Pastikan collection Firestore tersedia dan aturan aksesnya sesuai kebutuhan aplikasi.
-3. Tinjau Firestore Security Rules dan pembatasan API key yang sesuai.
+## 📸 Screenshot Aplikasi
 
-
-## Alur Penggunaan
-
-1. Buka layar `Home` untuk melihat tugas dari collection `todos`; tugas terbaru muncul lebih dahulu.
-2. Ketik tugas di kolom `Add new todo`, lalu tekan `Add`. Setelah berhasil, kolom input akan kosong kembali.
-3. Pilih tugas untuk membuka layar `Edit Todo`. Ubah namanya, lalu tekan `UPDATE`.
-4. Untuk menghapus tugas, tekan ikon hapus dan konfirmasikan tindakan.
-5. Perubahan akan muncul melalui listener Firestore. Jika operasi gagal, aplikasi menampilkan pemberitahuan kesalahan.
-
-## Screenshot
+Berikut beberapa tampilan dari aplikasi TodosApp:
 
 ### Halaman Home
+Menampilkan daftar tugas dan fitur untuk menambahkan tugas baru.
+
 ![Halaman Home](screenshots/home.jpg)
 
-### Halaman Edit Todo 
+### Halaman Edit Todo
+Memungkinkan pengguna mengubah nama tugas yang sudah dibuat.
+
 ![Halaman Edit Todo](screenshots/edit.jpg)
 
 ### Halaman Empty State
+Menampilkan kondisi ketika belum terdapat tugas yang tersimpan.
+
 ![Halaman Empty State](screenshots/empty-state.jpg)
 
+## 📄 Lisensi
 
-## Lisensi
+Proyek **TodosApp** menggunakan lisensi **MIT License** untuk source code aplikasi yang dibuat dalam proyek ini.
 
-File `LICENSE` memuat teks lisensi MIT dan pemberitahuan hak cipta kepada 650 Industries, Inc. (aka Expo), bertahun 2015-present. Namun, isi file itu saja belum memastikan kepemilikan atau cakupan lisensi untuk kode aplikasi. Periksa hak dan atribusi yang berlaku sebelum membagikan atau mendistribusikan proyek.
+Lisensi MIT memberikan izin kepada pengguna untuk menggunakan, menyalin, memodifikasi, menggabungkan, menerbitkan, mendistribusikan, dan menggunakan perangkat lunak ini, dengan tetap menyertakan pemberitahuan hak cipta dan teks lisensi.
+
+Lihat file [LICENSE](LICENSE) untuk informasi lengkap mengenai ketentuan lisensi.
+
+## 💡 Penutup
+
+TodosApp dikembangkan sebagai proyek aplikasi mobile untuk menerapkan penggunaan React Native, pengelolaan navigasi, serta integrasi database berbasis Firebase Cloud Firestore.
+
+Melalui aplikasi ini, diharapkan pengguna dapat mengelola aktivitas sehari-hari dengan lebih mudah, praktis, dan terorganisir.
+
+Terima kasih telah mengunjungi repository **TodosApp**! Semoga proyek ini dapat bermanfaat sebagai referensi dan menjadi dasar untuk pengembangan aplikasi yang lebih baik ke depannya.
+
+**Happy organizing, one task at a time! 🚀**
