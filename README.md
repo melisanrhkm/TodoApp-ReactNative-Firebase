@@ -140,7 +140,7 @@ Firebase diinisialisasi melalui `config.js`, dan konfigurasi client saat ini dit
 ![Halaman Edit Todo](screenshots/edit.jpg)
 
 ### Halaman Empty State
-![Halaman Empty State](screenshots/empty-state.png)
+![Halaman Empty State](screenshots/empty-state.jpg)
 
 
 ## Lisensi
